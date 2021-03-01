@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import InfoSection from './components/Content/InfoSection';
-import Hero from './components/HomeSlider/Hero';
 import Dropdown from './components/Navbar/Dropdown';
 import Navbar from './components/Navbar/Navbar';
-import { InfoData } from './data/InfoData';
-import { SliderData } from './data/SliderData';
-import GlobalStyle from './globalStyles';
+import Home from './pages/Homepage';
+import About from './pages/Aboutpage';
+import Services from './pages/ServicesPage';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './App.css';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,11 +16,15 @@ function App() {
 
   return (
     <>
-      <GlobalStyle />
-      <Navbar toggle={toggle} />
-      <Dropdown isOpen={isOpen} toggle={toggle} />
-      <Hero slides={SliderData} />
-      <InfoSection {...InfoData} />
+      <Router>
+        <Navbar toggle={toggle} />
+        <Dropdown isOpen={isOpen} toggle={toggle} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/services" component={Services} />
+        </Switch>
+      </Router>
     </>
   );
 }

@@ -1,3 +1,4 @@
+// import React, { useEffect, useState } from 'react';
 import React from 'react';
 import { Section, Container, ColumnLeft, ColumnRight } from './InfoElem';
 import { Button } from '../Button';
@@ -10,6 +11,21 @@ const InfoSection = ({
   image,
   reverse,
 }) => {
+  //create var to handle scroll
+  // const [scroll, setScroll] = useState(false);
+
+  // const activateAnimation = () => {
+  //   if (window.scrollY >= 1080) {
+  //     setScroll(true);
+  //   } else {
+  //     setScroll(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   window.addEventListener('scroll', activateAnimation);
+  // }, []);
+
   return (
     <Section>
       <Container>
@@ -21,7 +37,11 @@ const InfoSection = ({
             {label}
           </Button>
         </ColumnLeft>
-        <ColumnRight reverse={reverse}>
+        <ColumnRight
+          reverse={reverse}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1 } }}
+        >
           <img src={image} alt="home" />
         </ColumnRight>
       </Container>

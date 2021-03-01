@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/macro';
 import { IoMdArrowRoundForward } from 'react-icons/io';
 import { IoArrowForward, IoArrowBack } from 'react-icons/io5';
+import { motion } from 'framer-motion';
 
 export const HeroSection = styled.section`
   height: 100vh;
@@ -60,7 +61,7 @@ export const HeroImage = styled.img`
     );
   }
 `;
-export const HeroContent = styled.div`
+export const HeroContent = styled(motion.div)`
   position: relative;
   z-index: 10;
   display: flex;
@@ -82,6 +83,8 @@ export const HeroContent = styled.div`
     text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
   }
 `;
+
+export const BtnWrapper = styled(motion.div)``;
 
 export const Arrow = styled(IoMdArrowRoundForward)`
   margin-left: 0.5rem;

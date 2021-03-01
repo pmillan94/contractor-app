@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const Section = styled.section`
   width: 100%;
@@ -35,7 +36,7 @@ export const ColumnLeft = styled.div`
   }
 `;
 
-export const ColumnRight = styled.div`
+export const ColumnRight = styled(motion.div)`
   padding: 1rem 2rem;
   order: ${({ reverse }) => (reverse ? '1' : '2')};
   display: flex;

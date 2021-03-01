@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '../Button';
+import { motion } from 'framer-motion';
 import {
   HeroSection,
   HeroWrapper,
@@ -8,6 +9,7 @@ import {
   HeroImage,
   HeroContent,
   Arrow,
+  BtnWrapper,
   SliderButtons,
   PrevArrow,
   NextArrow,
@@ -52,6 +54,12 @@ const Hero = ({ slides }) => {
     return null;
   }
 
+  //animation styling
+  const fadeDown = {
+    hidden: { opacity: 0, y: -100 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <div>
       <HeroSection>
@@ -63,18 +71,37 @@ const Hero = ({ slides }) => {
                   <HeroSlider>
                     <HeroImage src={slide.image} alt={slide.alt} />
                     <HeroContent>
-                      <h1>{slide.title}</h1>
-                      <p>{slide.price}</p>
-                      <Button
-                        to={slide.path}
-                        primary="true"
-                        css={`
-                          max-width: 160px;
-                        `}
+                      <motion.h1
+                        variants={fadeDown}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ duration: 1 }}
                       >
-                        {slide.label}
-                        <Arrow />
-                      </Button>
+                        {slide.title}
+                      </motion.h1>
+                      <motion.p
+                        variants={fadeDown}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ duration: 0.5 }}
+                      >
+                        {slide.price}
+                      </motion.p>
+                      <BtnWrapper
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, transition: { duration: 1 } }}
+                      >
+                        <Button
+                          to={slide.path}
+                          primary="true"
+                          css={`
+                            max-width: 160px;
+                          `}
+                        >
+                          {slide.label}
+                          <Arrow />
+                        </Button>
+                      </BtnWrapper>
                     </HeroContent>
                   </HeroSlider>
                 )}
