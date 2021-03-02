@@ -38,13 +38,13 @@ const Navbar = ({ toggle }) => {
           <FaBars />
         </MobileIcon>
         <NavMenu>
-          {menuData.map((item, index) => (
-            <NavItem>
-              <NavMenuLinks to={item.link} key={index}>
-                {item.title}
-              </NavMenuLinks>
-            </NavItem>
-          ))}
+          {menuData.map(item => {
+            return (
+              <NavItem key={item.key}>
+                <NavMenuLinks to={item.link}>{item.title}</NavMenuLinks>
+              </NavItem>
+            );
+          })}
         </NavMenu>
         <NavBtn>
           <Button to="/contact" primary="true">
